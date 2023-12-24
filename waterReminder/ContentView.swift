@@ -8,12 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isWatered = false
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            ZStack {
+                Image("Image")
+                    .resizable()
+                    .scaledToFit()
+                    .clipShape(Circle())
+                Image(systemName: "crown.fill")
+                    .font(.system(size: 150))
+                    .foregroundColor(isWatered ? .white : .red)
+                
+            }.frame(minWidth: 600).shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+            Divider()
+            Toggle(isOn: $isWatered) {
+                Label("睡觉不", systemImage: "drop.fill")
+                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+            }
         }
         .padding()
     }
@@ -22,3 +35,5 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
+//APPLE
